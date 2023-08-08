@@ -1,0 +1,36 @@
+class TaskManager:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, description, tags):
+        self.tasks.append({'description': description, 'tags': tags})
+
+    def view_tasks(self):
+        for idx, task in enumerate(self.tasks, start=1):
+            print(f"{idx}. {task['description']} - Tags: {', '.join(task['tags'])}")
+
+    # Implementa las demás funciones necesarias
+
+def main():
+    task_manager = TaskManager()
+
+    while True:
+        print("\n--- Task Manager ---")
+        print("1. Agregar tarea")
+        print("2. Ver tareas")
+        print("3. Filtrar por etiqueta")
+        print("4. Eliminar tarea")
+        print("5. Salir")
+
+        choice = input("Selecciona una opción: ")
+
+        if choice == "1":
+            description = input("Descripción de la tarea: ")
+            tags = input("Etiquetas (separadas por comas): ").split(',')
+            task_manager.add_task(description, tags)
+        elif choice == "2":
+            task_manager.view_tasks()
+        # Implementa el resto de opciones
+
+if __name__ == "__main__":
+    main()
